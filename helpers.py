@@ -4,19 +4,6 @@ import requests
 import sys
 
 
-def get_exchange_rate_url(source: str, target: str) -> str:
-    """change url with valid source and target parameters
-    must have exactly 3 letters
-    """
-    if len(source.upper()) != 3:
-        print(f'Invalid {source} or {target}')
-        sys.exit()
-
-    url = f"https://sdw-wsrest.ecb.europa.eu/service/data/EXR/M.{source}.{target}.SP00.A?detail=dataonly"
-
-    return url
-
-
 def get_data_identifier_url(identifier: str) -> str:
     """change url with valid identifier parameter
     """
@@ -59,6 +46,6 @@ def create_df(input_url):
     values = _find_values(data_soup)
     times = _find_time(data_soup)
 
-    skuska = pd.DataFrame(zip(times, values), columns=['TIME_PERIOD', 'OBS_VALUE'])
-    skuska['OBS_VALUE'] = skuska['OBS_VALUE'].astype(float)
-    return skuska
+    df = pd.DataFrame(zip(times, values), columns=['TIME_PERIOD', 'OBS_VALUE'])
+    df['OBS_VALUE'] = df['OBS_VALUE'].astype(float)
+    return df
