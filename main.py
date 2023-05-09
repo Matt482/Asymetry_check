@@ -77,8 +77,8 @@ def get_asymmetries(
 
 
 if __name__ == "__main__":
-    kiska = get_asymmetries("Q.HR.N.A.A20.A.1.AT.2000.Z01.E", {1: 7})
-    print(kiska)
+    out_data = get_asymmetries("Q.HR.N.A.A20.A.1.AT.2000.Z01.E", {1: 7})
+    print(out_data)
 
 
 """        
